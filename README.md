@@ -3,14 +3,14 @@
 1. **Is a:**
    Inheritance example:
    ```javascript
-   class Processor {
+   class Device {
     constructor(brand, model) {
         this.brand = brand;
         this.model = model;
     }
    }
 
-   class Mobile {
+   class Smartphone {
        constructor(brand, model, processor) {
            this.brand = brand;
            this.model = model;
@@ -21,10 +21,10 @@
        }
    }
    
-   const processor = new Processor("Intel", "Core i7");
-   const mobile = new Mobile("Phone", "xyz model", processor);
-   const mobileProcessor = mobile.getProcessor();
-   console.log(mobile);
+   const processor = new Device("Intel", "Core i7");
+   const smartphone = new Smartphone("Phone", "xyz model", processor);
+   const smartphoneProcessor = smartphone.getProcessor();
+   console.log(smartphone);
    
    ```
 
@@ -55,39 +55,37 @@
 3. **Uses a:**
    Dependency example:
    ```javascript
-   class Department {
+   class Section {
     constructor(id, name) {
         this.id = id;
         this.name = name;
     }
    }
 
-   class University {
+   class College {
         constructor() {
-            this.departments = [];
+            this.sections = [];
          }
 
-   addDepartment(id, name) {
-        const department = new Department(id, name);
-        this.departments.push(department);
+   addSection(id, name) {
+        const section = new Section(id, name);
+        this.sections.push(section);
    }
 
-   displayDepartments() {
-        console.log("Departments in the university:");
-        this.departments.forEach(department => {
-            console.log(`ID: ${department.id}, Name: ${department.name}`);
+   displaySections() {
+        console.log("Sections in the college:");
+        this.sections.forEach(section => {
+            console.log(`ID: ${section.id}, Name: ${section.name}`);
         });
     }
    }
       
       
-   const university = new University();
-   university.addDepartment(1, "Computer Science");
-   university.addDepartment(2, "Electrical Engineering");
-   university.displayDepartments();
+   const college = new College();
+   college.addSection(1, "Computer Science");
+   college.addSection(2, "Electrical Engineering");
+   college.displaySections();
    ```
-
-These examples demonstrate the concepts of "is a" (inheritance), "has a" (composition), and "uses a" (dependency) in JavaScript programming.
 
 ### Relationship using Java
 
@@ -223,5 +221,3 @@ public class Uses_A {
     }
 }
 ```
-
-These concepts are fundamental to object-oriented programming and design in Java.
