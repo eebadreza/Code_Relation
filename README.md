@@ -1,5 +1,5 @@
 Relationship based on the concepts "is a," "has a," and "uses a":
-
+## JavaScript
 1. **Is a:**
    Inheritance example:
    ```javascript
@@ -77,6 +77,8 @@ Relationship based on the concepts "is a," "has a," and "uses a":
    ```
 
 These examples demonstrate the concepts of "is a" (inheritance), "has a" (composition), and "uses a" (dependency) in JavaScript programming.
+
+## Java
 
 Sure! Here are examples in Java for each of the concepts "is a," "has a," and "uses a":
 
