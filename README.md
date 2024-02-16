@@ -3,77 +3,88 @@
 1. **Is a:**
    Inheritance example:
    ```javascript
-   // Parent class
-   class Animal {
-       eat() {
-           console.log("Animal is eating");
-       }
+   class Processor {
+    constructor(brand, model) {
+        this.brand = brand;
+        this.model = model;
+    }
    }
 
-   // Child class inheriting from Animal
-   class Dog extends Animal {
-       bark() {
-           console.log("Dog is barking");
+   class Mobile {
+       constructor(brand, model, processor) {
+           this.brand = brand;
+           this.model = model;
+           this.processor = processor;
+       }
+       getProcessor() {
+           return this.processor;
        }
    }
-
-   // Creating an instance of Dog
-   const myDog = new Dog();
-   myDog.eat(); // Output: Animal is eating
-   myDog.bark(); // Output: Dog is barking
+   
+   const processor = new Processor("Intel", "Core i7");
+   const mobile = new Mobile("Phone", "xyz model", processor);
+   const mobileProcessor = mobile.getProcessor();
+   console.log(mobile);
+   
    ```
 
 2. **Has a:**
    Composition example:
    ```javascript
-   // Engine class
-   class Engine {
-       start() {
-           console.log("Engine started");
+   class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+   }
+   class Employee extends Person {
+       constructor(id,salary,name,age) {
+           super(name, age);
+           this.id = id;
+           this.salary = salary;
        }
    }
-
-   // Car class containing an Engine
-   class Car {
-       constructor() {
-           this.engine = new Engine(); // Car has an Engine
-       }
-
-       startCar() {
-           this.engine.start(); // Car uses the Engine to start
-       }
-   }
-
-   // Creating an instance of Car
-   const myCar = new Car();
-   myCar.startCar(); // Output: Engine started
+   
+   const emp1 = new Employee(1046,35000,'John',22);
+   const emp2 = new Employee(1047,40000,'Rajesh',27);
+   
+   console.log(emp1);
+   console.log(emp2);
    ```
 
 3. **Uses a:**
    Dependency example:
    ```javascript
-   // Printer class
-   class Printer {
-       print(document) {
-           console.log("Printing: " + document);
-       }
+   class Department {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+    }
    }
 
-   // Office class using Printer to print documents
-   class Office {
-       constructor(printer) {
-           this.printer = printer; // Office uses a Printer
-       }
+   class University {
+        constructor() {
+            this.departments = [];
+         }
 
-       printDocument(document) {
-           this.printer.print(document); // Office uses the Printer to print
-       }
+   addDepartment(id, name) {
+        const department = new Department(id, name);
+        this.departments.push(department);
    }
 
-   // Creating an instance of Printer and Office
-   const myPrinter = new Printer();
-   const myOffice = new Office(myPrinter);
-   myOffice.printDocument("Report"); // Output: Printing: Report
+   displayDepartments() {
+        console.log("Departments in the university:");
+        this.departments.forEach(department => {
+            console.log(`ID: ${department.id}, Name: ${department.name}`);
+        });
+    }
+   }
+      
+      
+   const university = new University();
+   university.addDepartment(1, "Computer Science");
+   university.addDepartment(2, "Electrical Engineering");
+   university.displayDepartments();
    ```
 
 These examples demonstrate the concepts of "is a" (inheritance), "has a" (composition), and "uses a" (dependency) in JavaScript programming.
@@ -83,27 +94,91 @@ These examples demonstrate the concepts of "is a" (inheritance), "has a" (compos
 - **Is a:** In Java, "is a" typically refers to inheritance, where one class can inherit properties and behaviors from another class. This is achieved using the "extends" keyword. For example, if class B extends class A, you could say "B is a type of A."
 
 ```java
-class A {
-    // Properties and methods of class A
+class Person {
+    protected String name;
+    protected int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 }
 
-class B extends A {
-    // Additional properties and methods specific to class B
+class Employee extends Person {
+    private int id;
+    private double salary;
+
+    public Employee(int id, double salary, String name, int age) {
+        super(name, age);
+        this.id = id;
+        this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "id "+id+" salary "+salary+" name "+name+" age "+age;
+    }
+}
+
+public class Is_A {
+    public static void main(String[] args) {
+        Employee emp1 = new Employee(1046, 35000, "John", 22);
+        Employee emp2 = new Employee(1047, 40000, "Rajesh", 27);
+
+        System.out.println(emp1);
+        System.out.println(emp2);
+    }
 }
 ```
 
 - **Has a:** "Has a" in Java often refers to composition, where one class contains an instance of another class as a member. This is sometimes achieved through instance variables or by passing instances through constructors. For example, if a Car class "has a" Engine, you could say "Car has an Engine."
 
 ```java
-class Engine {
-    // Properties and methods of Engine
+class Processor {
+    private String brand;
+    private String model;
+
+    public Processor(String brand, String model) {
+        this.brand = brand;
+        this.model = model;
+    }
+
+    @Override
+    public String toString() {
+        return "Processor{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                '}';
+    }
 }
 
-class Car {
-    private Engine engine; // Car has an Engine
+class Mobile {
+    private String brand;
+    private String model;
+    private Processor processor;
 
-    public Car(Engine engine) {
-        this.engine = engine;
+    public Mobile(String brand, String model, Processor processor) {
+        this.brand = brand;
+        this.model = model;
+        this.processor = processor;
+    }
+
+    public Processor getProcessor() {
+        return this.processor;
+    }
+
+    @Override
+    public String toString() {
+        return "Brand "+brand+" Model "+brand+" Processor "+processor;
+    }
+}
+
+public class Has_A {
+    public static void main(String[] args) {
+        Processor processor = new Processor("Intel", "Core i7");
+        Mobile mobile = new Mobile("Phone", "xyz model", processor);
+        Processor mobileProcessor = mobile.getProcessor();
+        System.out.println(mobile);
     }
 }
 ```
@@ -111,13 +186,40 @@ class Car {
 - **Uses a:** "Uses a" in Java generally implies dependency, where one class utilizes the functionality of another class. This could be through method calls, parameter passing, or object instantiation. For example, if a class Printer "uses a" Paper object to print, you could say "Printer uses a Paper."
 
 ```java
-class Paper {
-    // Properties and methods of Paper
-}
+import java.util.*;
 
-class Printer {
-    public void print(Paper paper) {
-        // Logic to print using the Paper object
+class Department{
+    int id;
+    String name;
+    Department(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "id = "+id+" name = "+name;
+    }
+}
+class University {
+    List<Department> dept = new ArrayList<>();
+    String name;
+    University(String name, List<Department> dept) {
+        this.name = name;
+        this.dept = dept;
+    }
+    public void getDepartments() {
+        dept.stream().forEach(ele-> System.out.println(ele));
+    }
+
+}
+public class Uses_A {
+    public static void main(String[] args) {
+        Department cs = new Department(1,"CS");
+        Department eee = new Department(2,"EEE");
+        List<Department> depts = Arrays.asList(cs,eee);
+        University uni = new University("XYZ",depts);
+        uni.getDepartments();
     }
 }
 ```
