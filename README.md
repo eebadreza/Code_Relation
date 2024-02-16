@@ -89,7 +89,7 @@
 
 ### Relationship using Java
 
-- **Is a:** In Java, "is a" typically refers to inheritance, where one class can inherit properties and behaviors from another class. This is achieved using the "extends" keyword. For example, if class B extends class A, you could say "B is a type of A."
+1. **Is a:** In Java, "is a" typically refers to inheritance, where one class can inherit properties and behaviors from another class. This is achieved using the "extends" keyword. For example, if class B extends class A, you could say "B is a type of A."
 
 ```java
 class Person {
@@ -129,7 +129,7 @@ public class Is_A {
 }
 ```
 
-- **Has a:** "Has a" in Java often refers to composition, where one class contains an instance of another class as a member. This is sometimes achieved through instance variables or by passing instances through constructors. For example, if a Car class "has a" Engine, you could say "Car has an Engine."
+2. **Has a:** "Has a" in Java often refers to composition, where one class contains an instance of another class as a member. This is sometimes achieved through instance variables or by passing instances through constructors. For example, if a Car class "has a" Engine, you could say "Car has an Engine."
 
 ```java
 class Processor {
@@ -181,7 +181,7 @@ public class Has_A {
 }
 ```
 
-- **Uses a:** "Uses a" in Java generally implies dependency, where one class utilizes the functionality of another class. This could be through method calls, parameter passing, or object instantiation. For example, if a class Printer "uses a" Paper object to print, you could say "Printer uses a Paper."
+3. **Uses a:** "Uses a" in Java generally implies dependency, where one class utilizes the functionality of another class. This could be through method calls, parameter passing, or object instantiation. For example, if a class Printer "uses a" Paper object to print, you could say "Printer uses a Paper."
 
 ```java
 import java.util.*;
